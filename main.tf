@@ -24,6 +24,7 @@ resource "aws_subnet" "private" {
   cidr_block        = cidrsubnet(var.CIDR_BLOCK, 4, count.index)
   tags = {
     Name = "Private subnet ${count.index}"
+    Tier = "Private"
   }
 }
 
@@ -36,6 +37,7 @@ resource "aws_subnet" "public" {
 
   tags = {
     Name = "Public subnet ${count.index}"
+    Tier = "Public"
   }
 }
 
