@@ -1,11 +1,11 @@
 variable "SUBNET_ID" {
-  type = string
+  type        = string
   description = "Public subnet to host NAT gateway"
 }
 
 variable "ROUTE_TABLE_ID" {
-  type = string
-  description = "Route table to add routes to" 
+  type        = string
+  description = "Route table to add routes to"
 }
 
 data "aws_subnet" "public" {

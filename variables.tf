@@ -18,7 +18,7 @@ variable "PRIVATE_SUBNET_COUNT" {
   description = "How many private subnets to create"
 
   validation {
-    condition     = var.PRIVATE_SUBNET_COUNT > 0 
+    condition     = var.PRIVATE_SUBNET_COUNT > 0
     error_message = "At least one private subnet is required."
   }
 }
@@ -28,13 +28,13 @@ variable "PUBLIC_SUBNET_COUNT" {
   description = "How many public subnets to create"
 
   validation {
-    condition     = var.PUBLIC_SUBNET_COUNT > 0 
+    condition     = var.PUBLIC_SUBNET_COUNT > 0
     error_message = "At least one public subnet is required."
   }
 }
 
 variable "AMI_ID" {
-  type = string
+  type        = string
   description = "NAT instance AMI-ID, if not passed creates NAT gateway instead."
-  default = ""
+  default     = ""
 }

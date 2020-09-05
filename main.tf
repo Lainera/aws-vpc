@@ -76,21 +76,21 @@ resource "aws_route_table_association" "private" {
 
 // NGW
 module "nat_gateway" {
-  source = "./nat-gateway"
-  count = local.use_managed_nat ? 1 : 0
-  depends_on    = [aws_internet_gateway.igw]
-  SUBNET_ID = aws_subnet.public[0].id
+  source         = "./nat-gateway"
+  count          = local.use_managed_nat ? 1 : 0
+  depends_on     = [aws_internet_gateway.igw]
+  SUBNET_ID      = aws_subnet.public[0].id
   ROUTE_TABLE_ID = aws_route_table.private.id
 }
 
 // Instance
 module "nat_instance" {
-  source = "./nat-instance"
-  count = local.use_managed_nat ? 0 : 1
-  depends_on    = [aws_internet_gateway.igw]
-  
+  source     = "./nat-instance"
+  count      = local.use_managed_nat ? 0 : 1
+  depends_on = [aws_internet_gateway.igw]
+
   AMI_ID = var.AMI_ID
 
-  SUBNET_ID = aws_subnet.public[0].id
+  SUBNET_ID      = aws_subnet.public[0].id
   ROUTE_TABLE_ID = aws_route_table.private.id
 }
