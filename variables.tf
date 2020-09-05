@@ -33,3 +33,8 @@ variable "PUBLIC_SUBNET_COUNT" {
   }
 }
 
+variable "AMI_ID" {
+  type = string
+  description = "NAT instance AMI-ID, if not passed creates NAT gateway instead."
+  default = ""
+}
